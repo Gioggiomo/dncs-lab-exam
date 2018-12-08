@@ -70,7 +70,7 @@ cd dncs-lab
 ```
 Once you launch the vagrant script, it may take a while for the entire topology to become available.
  - Verify the status of the 4 VMs
- ```
+```
  [dncs-lab]$ vagrant status
 Current machine states:
 
@@ -85,18 +85,17 @@ host-b                    running (virtualbox)
 `vagrant ssh host-a`
 `vagrant ssh host-b`
 
-```
-
 # Description
-To complete this assignment, we were asked to design a functioning network where any host configured and attached to router-1 (through switch) can browse a website hosted on host-2-c.
+To complete this assignment, we were asked to design a functioning network where any host configured and
+attached to router-1 (through switch) can browse a website hosted on host-2-c.
 The requirements we were asked to respect are the following:
  - Up to 130 hosts in the same subnet of host-1-a
  - Up to 25 hosts in the same subnet of host-1-b
  - Consume as few IP addresses as possible
 
 # Solution
-Starting from private ip addresses, `host-1-a` has been set to have up to 130 hosts, thus those ip addresses must be `/24` because 130 becomes 10000010 when converted in binary. Following the same principle, `host-1-b` must be `/27` (25 hosts).
-
-...
+Starting from private ip addresses, `host-1-a` has been set to have up to 130 hosts, thus those ip addresses
+must be `/24` because 130 becomes 10000010 when converted in binary. Following the same principle, `host-1-b`
+must be `/27` (25 hosts).
 
 
