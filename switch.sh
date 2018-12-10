@@ -10,7 +10,11 @@ ovs-vsctl add-br switch
 ovs-vsctl add-port switch eth1
 
 # South to host-1-a
-ovs-vsctl add-port switch eth2 tag=2
+ovs-vsctl add-port switch eth2 tag=7
 
 # South to host-1-b
-ovs-vsctl add-port switch eth3 tag=3
+ovs-vsctl add-port switch eth3 tag=8
+
+ip link set eth1 up
+ip link set eth2 up
+ip link set eth3 up
