@@ -100,5 +100,6 @@ The requirements we were asked to respect are the following:
 Starting from private ip addresses, `host-1-a` has been set to contain up to 130 hosts thus, those ip addresses must be `/24` because 130 becomes 10000010 (8 bits) when converted in binary.
 By following the same principle, `host-1-b` must be `/27` because it must contain 25 hosts.
 
+
 ...
 
