@@ -30,5 +30,3 @@ ip addr add 172.23.1.34/30 dev eth1
 # Where should I go?
 ip route del default
 ip route add default via 172.23.1.33
-
-
