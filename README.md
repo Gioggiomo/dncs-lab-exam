@@ -111,17 +111,18 @@ To test the reachability of the web server (on `host-2-c`) do command *curl 172.
 Given the scripts by the professor, I adapted the code creating other scripts to be launched in their turn
 
 
-| --------|:---------:|
-| *ip link add link ethN name eth1.M type vlan id M* | add a link into an existing interface _ethN_ and it is defined to be a VLAN link with and id _M_, where _N_ and _M_ are integers|
-| *ip link set dev ethN.M up* | set an interface called _ethN.M_ up, where _N_ and _M_ are integers (_M_ is set only when many networks have to be set through the same interface _ethN_ ). By giving this command, that interface is ready to be used |
-| *ip addr add 172.23.0.2/24 dev eth1* | add an address (specifying the subnet mask) to the interface called _eth1_ |
-| *ip route del default* | delete the default IP router address |
-| *ip route add default via 172.23.1.37* | After having been deleted, the default router is set to be a certain IP address |
-| *ip route add 172.23.1.32/30 via 172.23.1.38* | It is also possible to add an IP network address which has to be reached through a certain interface |
-| *ovs-vsctl add-br Name* | set the machine to be a switch called _Name_ |
-| *ovs-vsctl add-port Name ethN tag=M* | into the switch called _Name_ a port _ethN_ is added and (if there are vlans) the corresponding tag _M_, previously set on the router, must be used |
+|:--------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| *ip link add link ethN name eth1.M type vlan id M* | add a link into an existing interface _ethN_ and it is defined to be a VLAN link with and id _M_, where _N_ and _M_ are integers
+| *ip link set dev ethN.M up*                        | set an interface called _ethN.M_ up, where _N_ and _M_ are integers (_M_ is set only when many networks have to be set through the same interface _ethN_ ). By giving this command, that interface is ready to be used |
+| *ip addr add 172.23.0.2/24 dev eth1*               | add an address (specifying the subnet mask) to the interface called _eth1_                                                                                                                                             |
+| *ip route del default*                             | delete the default IP router address                                                                                                                                                                                   |
+| *ip route add default via 172.23.1.37*             | After having been deleted, the default router is set to be a certain IP address                                                                                                                                        |
+| *ip route add 172.23.1.32/30 via 172.23.1.38*      | It is also possible to add an IP network address which has to be reached through a certain interface                                                                                                                   |
+| *ovs-vsctl add-br Name*                            | set the machine to be a switch called _Name_                                                                                                                                                                           |
+| *ovs-vsctl add-port Name ethN tag=M*               | into the switch called _Name_ a port _ethN_ is added and (if there are vlans) the corresponding tag _M_, previously set on the router, must be used                                                                    |
 
 
 
-...
+
+
 
