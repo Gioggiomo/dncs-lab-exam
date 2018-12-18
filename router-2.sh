@@ -11,12 +11,15 @@ export DEBIAN_FRONTEND=noninteractive
 #apt-get install -y frr --assume-yes --force-yes
 
 apt-get update
-sudo apt-get install -y tcpdump apt-transport-https ca-certificates curl software-properties-common --assume-yes --force-yes
+#sudo 
+apt-get install -y tcpdump apt-transport-https ca-certificates curl software-properties-common --assume-yes --force-yes
 wget -O- https://apps3.cumulusnetworks.com/setup/cumulus-apps-deb.pubkey | apt-key add -
-sudo add-apt-repository add-apt-repository "deb [arch=amd64] https://apps3.cumulusnetworks.com/repos/deb $(lsb_release -cs) roh-3"
+#sudo 
+add-apt-repository add-apt-repository "deb [arch=amd64] https://apps3.cumulusnetworks.com/repos/deb $(lsb_release -cs) roh-3"
 #echo "deb [arch=amd64] https://apps3.cumulusnetworks.com/repos/deb $(lsb_release -cs) roh-3" >> /etc/apt/sources.list.d/cumulus-apps-deb-$(lsb_release -cs).list
 apt-get update
-sudo apt-get install -y frr --assume-yes --force-yes
+#sudo 
+apt-get install -y frr --assume-yes --force-yes
 
 # Forwarding enabled
 sysctl -w net.ipv4.ip_forward=1
