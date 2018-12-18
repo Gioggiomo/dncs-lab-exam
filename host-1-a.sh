@@ -1,6 +1,7 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y tcpdump --assume-yes
+apt-get install -y curl --assume-yes
 
 # Setting up eth1 interface (North)
 ip link set dev eth1 up
