@@ -110,6 +110,8 @@ To test the reachability of the web server (on `host-2-c`) do command *curl 172.
 
 Given the scripts by the professor, I adapted the code creating other scripts to be launched in their turn
 
+
+| --------|:---------:|
 | *ip link add link ethN name eth1.M type vlan id M* | add a link into an existing interface _ethN_ and it is defined to be a VLAN link with and id _M_, where _N_ and _M_ are integers|
 | *ip link set dev ethN.M up* | set an interface called _ethN.M_ up, where _N_ and _M_ are integers (_M_ is set only when many networks have to be set through the same interface _ethN_ ). By giving this command, that interface is ready to be used |
 | *ip addr add 172.23.0.2/24 dev eth1* | add an address (specifying the subnet mask) to the interface called _eth1_ |
