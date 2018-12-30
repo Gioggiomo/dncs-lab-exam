@@ -104,7 +104,23 @@ In both `router-1` and `router-2` all interfaces has to be set up and are assign
 As you can notice, in `router-2` the default router has been deleted and replaced with the relative IP address of `router-1` to which it is connected.
 I did not replaced `router-1` default router with the IP address of `router-2` in order to avoid loops: if a host requests access to an IP address which is neither reachable by `router-1` nor by `router-2`, the packet will keep brouncing from one router to the other untill the TTL - time to live - expires.
 
-To test the reachability of the web server (on `host-2-c`) do command *curl 172.23.1.34* on `host-1-a` or `host-1-b` and expect the following result
+To test the reachability of the web server (on `host-2-c`) do command *curl 172.23.1.34:8080* on `host-1-a` or `host-1-b` and expect the following result
+```
+
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.15.8</center>
+</body>
+</html>
+
+```
+
+Why this?
+As you might have noticed, during the setting up of `host-2-c`, an error has incurred: _host-2-c: Unable to find image 'nginx:latest' locally_
+Fortunately the system is smart enough to correct it by itself, infact on the next line we find _host-2-c: latest: Pulling from library/nginx_ then the pulling and dowloading request for a newer image for nginx:latest are completed.
+
 
 # Commands meaning
 
@@ -112,17 +128,16 @@ Given the scripts by the professor, I adapted the code creating other scripts to
 
 | Commands                                           | Meaning                                                                                                                                                                                                                |
 |:--------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| *ip link add link ethN name eth1.M type vlan id M* | add a link into an existing interface _ethN_ and it is defined to be a VLAN link with and id _M_, where _N_ and _M_ are integers
-| *ip link set dev ethN.M up*                        | set an interface called _ethN.M_ up, where _N_ and _M_ are integers (_M_ is set only when many networks have to be set through the same interface _ethN_ ). By giving this command, that interface is ready to be used |
-| *ip addr add 172.23.0.2/24 dev eth1*               | add an address (specifying the subnet mask) to the interface called _eth1_                                                                                                                                             |
-| *ip route del default*                             | delete the default IP router address                                                                                                                                                                                   |
+| *ip link add link ethN name ethN.M type vlan id M* | Add a link into an existing interface _ethN_ and it is defined to be a VLAN link with and id _M_, where _N_ and _M_ are integers
+| *ip link set dev ethN.M up*                        | Set an interface called _ethN.M_ up, where _N_ and _M_ are integers (_M_ is set only when many networks have to be set through the same interface _ethN_ ). By giving this command, that interface is ready to be used |
+| *ip addr add 172.23.0.2/24 dev eth1*               | Add an address (specifying the subnet mask) to the interface called _eth1_                                                                                                                                             |
+| *ip route del default*                             | Delete the default IP router address                                                                                                                                                                                   |
 | *ip route add default via 172.23.1.37*             | After having been deleted, the default router is set to be a certain IP address                                                                                                                                        |
 | *ip route add 172.23.1.32/30 via 172.23.1.38*      | It is also possible to add an IP network address which has to be reached through a certain interface                                                                                                                   |
-| *ovs-vsctl add-br Name*                            | set the machine to be a switch called _Name_                                                                                                                                                                           |
-| *ovs-vsctl add-port Name ethN tag=M*               | into the switch called _Name_ a port _ethN_ is added and (if there are vlans) the corresponding tag _M_, previously set on the router, must be used                                                                    |
+| *ovs-vsctl add-br Name*                            | Set the machine to be a switch called _Name_                                                                                                                                                                           |
+| *ovs-vsctl add-port Name ethN tag=M*               | Into the switch called _Name_ a port _ethN_ is added and (if there are vlans) the corresponding tag _M_, previously set on the router, must be used                                                                    |
+| *curl 172.23.1.34:8080*                            | Using the port number 8080, the host (which can be either `host-1-a` or `host-1-b`) tries to reach a webpage hosted at address 172.23.1.34                                                                             |
 
 
-
-
-
+```
 
